@@ -1,7 +1,7 @@
 FROM debian:11
 
 RUN apt-get update && \
-    apt-get install -y mosquitto-clients jq && \
+    apt-get install -y mosquitto-clients jq ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
