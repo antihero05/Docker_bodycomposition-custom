@@ -12,6 +12,6 @@ Variable|Usage
 MQTTHOST|Hostname for the MQTT server
 MQTTUSER|User for subscribing to the MQTT server
 MQTTPASSWORD|Password for the MQTT user
-MQTTTOPIC|Topic providing the Mi Scale Data (including user)
+MQTTTOPIC|MQTT Topic providing the Mi Scale Data (including the user defined on the scale for assigning the data)
 GARMINUSER|Mailadress of the 'Garmin Connect' account
 GARMINPASSWORD|Passwort for the 'Garmin Connect' account
