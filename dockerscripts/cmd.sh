@@ -3,7 +3,7 @@ set -e
 
 read json
 
-#echo "You entered: $json"
+echo "Received data from MQTT: $json"
 
 bmi=$(echo "$json" | jq '.bmi')
 bone_mass=$(echo "$json" | jq '.bone_mass')
@@ -19,7 +19,7 @@ timestamp=$(echo "$json" | jq '.timestamp')
 timestamp=$(eval echo $timestamp)
 unix_timestamp=$(date -d $timestamp '+%s')
 
-#echo "'$bmi', '$bone_mass', '$calories', '$fat', '$hydration', '$metabolic_age', '$muscle_mass', '$visceral_fat', '$weight', '$unix_timestamp'"
+echo "Formatted data at $timestamp: '$bmi', '$bone_mass', '$calories', '$fat', '$hydration', '$metabolic_age', '$muscle_mass', '$visceral_fat', '$weight', '$unix_timestamp'"
 
 current_time=$(date '+%s')
 measurement_time_limit=$(($unix_timestamp + 900))
