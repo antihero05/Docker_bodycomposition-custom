@@ -25,6 +25,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/arm/v6
+          platforms: linux/arm/v6,linux/arm64,linux/amd64
           push: true
           tags: antihero05/bodycomposition-custom:latest
