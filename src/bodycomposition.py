@@ -7,7 +7,7 @@ import sys
 from garth.exc import GarthHTTPError
 from garminconnect import Garmin, GarminConnectAuthenticationError
 
-tokenstore = os.getenv("GARMINTOKENS")
+tokens = os.getenv("GARMINTOKENSTORE")
 email = os.getenv("GARMINUSER")
 password = os.getenv("GARMINPASSWORD")
 
@@ -15,24 +15,27 @@ def init_api():
     try:
         # Using Oauth1 and OAuth2 token files from directory
         print(
-        f"Trying to login to Garmin Connect using token data from directory '{tokenstore}'...\n"
+        f"Trying to login to Garmin Connect using token data from directory '{tokens}'...\n"
         )
         garmin = Garmin()
-        garmin.login(tokenstore)
+        garmin.login(tokens)
 
     except (FileNotFoundError, GarthHTTPError, GarminConnectAuthenticationError):
         # Session is expired. You'll need to log in again
         print(
         "Login tokens not present, login with your Garmin Connect credentials to generate them.\n"
-        f"They will be stored in '{tokenstore}' for future use.\n"
+        f"They will be stored in '{tokens}' for future use.\n"
         )
         try:
             garmin = Garmin(email=email, password=password, is_cn=False)
             garmin.login()
             # Save Oauth1 and Oauth2 token files to directory for next login
-            garmin.garth.dump(tokenstore)
+            garmin.garth.dump(tokens)
+            print(
+                f"Oauth tokens stored in '{tokens}' directory for future use.\n"
+            )
         
-        except (FileNotFoundError, GarthHTTPError, GarminConnectAuthenticationError, requests.exceptions.HTTPError) as err:
+        except (GarthHTTPError, GarminConnectAuthenticationError, requests.exceptions.HTTPError) as err:
             print(err)
             return None
     finally:
@@ -87,5 +90,6 @@ if __name__ == "__main__":
                 visceral_fat_rating=visceral_fat_rating,
                 bmi=bmi
                 )
+            print("Upload to Garmin Connect was successful!")
         except (FileNotFoundError, GarthHTTPError, GarminConnectAuthenticationError, requests.exceptions.HTTPError) as err:
             print(err)

@@ -15,4 +15,4 @@ MQTTPASSWORD|Password for the MQTT user
 MQTTTOPIC|MQTT Topic providing the Mi Scale Data (including the user defined on the scale for assigning the data)
 GARMINUSER|Mailaddress of the 'Garmin Connect' account
 GARMINPASSWORD|Passwort for the 'Garmin Connect' account
-GARMINTOKENS|Directory for 'Garmin Connect' oAuth Tokens - Default /opt/bodycomposition/tokens
+GARMINTOKENSTORE|Directory for 'Garmin Connect' oAuth Tokens - Default /opt/bodycomposition/tokens
