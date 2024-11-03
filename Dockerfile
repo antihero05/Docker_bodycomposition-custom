@@ -7,11 +7,10 @@ RUN mkdir -p /opt/bodycomposition/tokens
 ENV GARMINTOKENSTORE /opt/bodycomposition/tokens
 
 RUN apt-get update && \
-    apt-get install -y mosquitto-clients jq ca-certificates python3-pip && \
+    apt-get install -y mosquitto-clients jq ca-certificates python3-pip libxml2 libxslt && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip
 RUN pip install --upgrade garminconnect
 
 COPY dockerscripts/ /
