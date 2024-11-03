@@ -4,7 +4,7 @@ WORKDIR /opt/bodycomposition
 COPY src /opt/bodycomposition
 
 RUN mkdir -p /opt/bodycomposition/tokens
-ENV GARMINTOKENS /opt/bodycomposition/tokens
+ENV GARMINTOKENSTORE /opt/bodycomposition/tokens
 
 RUN apt-get update && \
     apt-get install -y mosquitto-clients jq ca-certificates python3-pip && \
