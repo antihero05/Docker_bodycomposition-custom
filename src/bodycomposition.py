@@ -75,7 +75,6 @@ if __name__ == "__main__":
     else:
         try:
             api = init_api()
-            print(api)
             if api:
                 api.add_body_composition(
                 json_data["timestamp"],
